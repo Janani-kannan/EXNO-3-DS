@@ -31,8 +31,98 @@ We use this categorical data encoding technique when the features are nominal(do
 • Yeojohnson method
 
 # CODING AND OUTPUT:
-       # INCLUDE YOUR CODING AND OUTPUT SCREENSHOTS HERE
+
+  ```
+       import pandas as pd
+
+       df=pd.read_csv("C:\\Users\\admin\\Downloads\\data.csv")
+       df
+ ```
+      
+  <img width="545" height="375" alt="image" src="https://github.com/user-attachments/assets/58ca5168-2045-4b12-98e6-4210223f0045" />
+       
+ ```
+       from sklearn.preprocessing import OrdinalEncoder,LabelEncoder
+```
+```
+       df1=df.copy()
+       df1=df.copy()
+       education=["High School","Diploma","Bachelors","Masters","PhD"]
+       enc=OrdinalEncoder(categories=[education])
+       enc.fit_transform(df1[['Ord_2']])
+      df1['ordinalencoder']=enc.fit_transform(df1[['Ord_2']])
+      df1
+```
+
+  <img width="667" height="373" alt="image" src="https://github.com/user-attachments/assets/a6f8970c-a105-4180-aa8a-2617816fb84d" />
+
+
+```
+      df2=df.copy()
+      enc=LabelEncoder()
+      df1['LabelEncoder']=enc.fit_transform(df1[['Ord_2']])
+      df1
+```
+   <img width="771" height="382" alt="image" src="https://github.com/user-attachments/assets/3f9e56ab-564a-4aef-91d8-e4a3757d105f" />
+   
+```
+from sklearn.preprocessing import OneHotEncoder
+```
+```
+df3=df.copy()
+enc=OneHotEncoder()
+newdata=pd.DataFrame(enc.fit_transform(df3[['City']]))
+df4=pd.concat([df3,newdata],axis=1)
+df4
+```
+
+  <img width="581" height="387" alt="image" src="https://github.com/user-attachments/assets/ef93bbb1-6af0-4c46-a298-9ffc6d5b36d8" />
+
+
+```
+pd.get_dummies(df4,columns=['City'])
+```
+
+<img width="912" height="367" alt="image" src="https://github.com/user-attachments/assets/08b486c6-6090-4c88-9d64-f213b83cdb20" />
+
+
+```
+pip install --upgrade category_encoders
+```
+ <img width="1250" height="493" alt="image" src="https://github.com/user-attachments/assets/7114fab0-3942-4975-9d81-82808c3eaa8b" />
+
+```
+from category_encoders import BinaryEncoder
+```
+```
+df5=df.copy()
+enc=BinaryEncoder()
+newdata=pd.DataFrame(enc.fit_transform(df5[['Ord_1']]))
+df6=pd.concat([df5,newdata],axis=1)
+df6
+```
+  <img width="732" height="385" alt="image" src="https://github.com/user-attachments/assets/a1c27709-766e-4a98-8e5e-ff1c69c58431" />
+
+```
+from category_encoders import TargetEncoder
+```
+```
+df7=df.copy()
+enc=TargetEncoder()
+newdata=pd.DataFrame(enc.fit_transform(df7[['Ord_1']],df7['Target']))
+df8=pd.concat([df7,newdata],axis=1)
+df8
+```
+  <img width="637" height="382" alt="image" src="https://github.com/user-attachments/assets/5d2b9b1e-8720-464c-af5e-8d7238284723" />
+
+
+
+
 # RESULT:
-       # INCLUDE YOUR RESULT HERE
+
+       
+      Thus the given data, Feature Encoding, Transformation process and save the data to a file was performed successfully.
+
+
 
        
