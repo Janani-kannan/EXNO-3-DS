@@ -177,10 +177,97 @@ plt.show()
 
 <img width="869" height="562" alt="image" src="https://github.com/user-attachments/assets/d14436db-31c7-4187-a953-af9cbff1670a" />
 
+```
+df2=df.copy()
+df2["sqrt transformation"]=np.sqrt(df["Moderate Positive Skew"])
+df2
+```
+
+<img width="1184" height="523" alt="image" src="https://github.com/user-attachments/assets/52db4e9f-00dd-44e1-bdf1-79d2fb1df4a9" />
+
+```
+sm.qqplot(df["sqrt transformation"],line="45")
+plt.show()
+```
+
+<img width="831" height="553" alt="image" src="https://github.com/user-attachments/assets/f8a337ff-249b-4e10-a914-0a73a498949b" />
+
+```
+df3=df.copy()
+df3['square transformation']=np.square(df["Moderate Positive Skew"])
+df3
+```
+
+<img width="1350" height="541" alt="image" src="https://github.com/user-attachments/assets/0d7a669c-32c9-4c66-a9bd-ac9275685908" />
+
+```
+sm.qqplot(df3["square transformation"],line="45")
+plt.show()
+```
+
+<img width="825" height="537" alt="image" src="https://github.com/user-attachments/assets/6a160550-f25f-406b-9655-328a581a129f" />
+
+```
+df4=df.copy()
+df4['reciprocal transformation']=np.square(df["Moderate Positive Skew"])
+df4
+```
+
+<img width="1359" height="543" alt="image" src="https://github.com/user-attachments/assets/6daaeea5-f6c9-46cc-9e4e-da6fd9a9436d" />
+
+```
+sm.qqplot(df4["reciprocal transformation"],line="45")
+plt.show()
+```
+
+<img width="888" height="552" alt="image" src="https://github.com/user-attachments/assets/b5b42b82-f781-4dd6-bf9a-a348b2f8fa6f" />
+
+```
+from scipy import stats
+
+df5=df.copy()
+df['boxcox transformation'],p=stats.boxcox(df5["Moderate Positive Skew"])
+df5
+```
+
+<img width="1195" height="514" alt="image" src="https://github.com/user-attachments/assets/1b05e072-0258-470f-becc-0fa3ab085305" />
 
 
+```
+sm.qqplot(df["boxcox transformation"],line="45")
+plt.show()
+```
+<img width="892" height="547" alt="image" src="https://github.com/user-attachments/assets/57e288af-1f52-4db2-bbc2-6f21b8bfad9f" />
 
+```
+df6=df.copy()
+df6['yeojohnson transformation'],p=stats.boxcox(df5["Moderate Positive Skew"])
+df6
+```
 
+<img width="1360" height="509" alt="image" src="https://github.com/user-attachments/assets/8bc48c0c-765b-4b88-89fa-4a27df99b849" />
+
+```
+sm.qqplot(df6["yeojohnson transformation"],line="45")
+plt.show()
+```
+<img width="761" height="552" alt="image" src="https://github.com/user-attachments/assets/873edc3f-bb52-4b1b-888e-625f61ec0b4a" />
+
+```
+from sklearn.preprocessing import QuantileTransformer
+
+df7=df.copy()
+qt=QuantileTransformer(output_distribution="normal")
+df7['QuantileTransformation']=qt.fit_transform(df7[["Highly Positive Skew"]])
+df7
+```
+<img width="1362" height="562" alt="image" src="https://github.com/user-attachments/assets/c945e023-dfdd-487a-b3b8-076a334efc85" />
+
+```
+sm.qqplot(df7['QuantileTransformation'],line="45")
+plt.show()
+```
+<img width="749" height="538" alt="image" src="https://github.com/user-attachments/assets/7e6a841c-399b-4886-ba64-bab7fffba395" />
 
 
 # RESULT:
