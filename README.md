@@ -43,8 +43,7 @@ We use this categorical data encoding technique when the features are nominal(do
        
  ```
        from sklearn.preprocessing import OrdinalEncoder,LabelEncoder
-```
-```
+
        df1=df.copy()
        df1=df.copy()
        education=["High School","Diploma","Bachelors","Masters","PhD"]
@@ -67,8 +66,7 @@ We use this categorical data encoding technique when the features are nominal(do
    
 ```
 from sklearn.preprocessing import OneHotEncoder
-```
-```
+
 df3=df.copy()
 enc=OneHotEncoder()
 newdata=pd.DataFrame(enc.fit_transform(df3[['City']]))
@@ -114,6 +112,73 @@ df8=pd.concat([df7,newdata],axis=1)
 df8
 ```
   <img width="637" height="382" alt="image" src="https://github.com/user-attachments/assets/5d2b9b1e-8720-464c-af5e-8d7238284723" />
+
+## 2.Data_Transform
+
+```
+import pandas as pd
+df=pd.read_csv("C:\\Users\\admin\\Downloads\\Data_to_Transform.csv")
+df
+```
+
+<img width="883" height="522" alt="image" src="https://github.com/user-attachments/assets/01668826-17ac-43d9-bf50-828faaf8feb3" />
+
+```
+df.skew()
+```
+
+<img width="368" height="125" alt="image" src="https://github.com/user-attachments/assets/1fe1631b-3596-4cef-a1c1-e8b9040e59ee" />
+
+```
+import numpy as np
+df1=df.copy()
+df['log transformation']=np.log(df["Moderate Positive Skew"])
+df1
+```
+
+<img width="898" height="524" alt="image" src="https://github.com/user-attachments/assets/e8dda669-dcc4-4496-9104-9d9ec26fee42" />
+
+
+```
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+```
+
+<img width="818" height="563" alt="image" src="https://github.com/user-attachments/assets/567be771-ffa3-4f54-8128-a503ccc46506" />
+
+```
+sm.qqplot(df["Highly Positive Skew"],line="45")
+plt.show()
+```
+
+<img width="867" height="561" alt="image" src="https://github.com/user-attachments/assets/f4dfe8ef-c27e-46bc-baad-bf31af6cae82" />
+
+
+```
+sm.qqplot(df["Moderate Negative Skew"],line="45")
+plt.show()
+```
+
+
+<img width="873" height="518" alt="image" src="https://github.com/user-attachments/assets/8bef1a50-341c-4070-a716-49189366817b" />
+
+```
+sm.qqplot(df["Highly Negative Skew"],line="45")
+plt.show()
+```
+
+
+<img width="795" height="553" alt="image" src="https://github.com/user-attachments/assets/08760d15-5f2d-4327-afad-58cfa3296008" />
+
+```
+sm.qqplot(df["log transformation"],line="45")
+plt.show()
+```
+
+<img width="869" height="562" alt="image" src="https://github.com/user-attachments/assets/d14436db-31c7-4187-a953-af9cbff1670a" />
+
+
+
 
 
 
